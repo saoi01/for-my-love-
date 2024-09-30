@@ -46,7 +46,7 @@
             transition: transform 0.5s ease;
         }
         .slide {
-            min-width: 200%;
+            min-width: 140%;
             transition: opacity 1s ease;
         }
     </style>
@@ -84,16 +84,7 @@
         }
 
         function changeBackground() {
-            document.body.style.backgroundColor = getRandomColor();
-        }
-
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
+            document.body.style.backgroundColor = getRandomColor(dark blue);
         }
 
         function nextSlide() {
