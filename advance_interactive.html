@@ -11,14 +11,18 @@
             font-family: 'Arial', sans-serif; /* Simple font */
             text-align: center; /* Center the text */
             padding: 20px; /* Padding around the content */
+            background-image: url('https://i.imgur.com/M8RZ9oe.png'); /* Background with pink ribbons */
+            background-size: cover; /* Cover the whole background */
         }
         h1 {
             color: #ffcccb; /* Light pink color for the title */
+            animation: fadeIn 1s; /* Fade-in animation */
         }
         .message {
             display: none; /* Hide messages initially */
             margin: 20px 0; /* Margin for messages */
             font-size: 1.5em; /* Font size for messages */
+            animation: slideIn 0.5s; /* Slide-in animation */
         }
         button {
             background-color: #007bff; /* Button color */
@@ -28,10 +32,20 @@
             font-size: 1em; /* Font size for buttons */
             cursor: pointer; /* Pointer cursor for buttons */
             border-radius: 5px; /* Rounded corners for buttons */
-            transition: background-color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+            margin: 10px; /* Margin for buttons */
         }
         button:hover {
             background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
@@ -61,8 +75,11 @@
         function revealMessage(index) {
             const message = document.getElementById(`message-${index}`);
             message.style.display = message.style.display === 'none' || message.style.display === '' ? 'block' : 'none';
+            if (message.style.display === 'block') {
+                message.classList.add('show');
+                setTimeout(() => message.classList.remove('show'), 2000); // Message will fade out after 2 seconds
+            }
         }
     </script>
 </body>
 </html>
-
