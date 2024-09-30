@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Monthsary, Love!♡</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            transition: background-color 0.5s;
+        }
+        .message {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #FF69B4; /* Hot Pink */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #FF1493; /* Deeper Pink */
+        }
+        #specialMessage {
+            display: none; /* Initially hidden */
+            font-size: 20px;
+            margin-top: 20px;
+            color: #FFA07A; /* Light Salmon */
+        }
+        .slider {
+            max-width: 500px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Monthsary, My Love! 💖</h1>
+    <p>Click the buttons below to change the background color, reveal a message, and view some lovely photos!</p>
+    
+    <button onclick="revealMessage()">Reveal Message</button>
+    <button onclick="changeBackground()">Change Background Color</button>
+    
+    <p id="specialMessage">You're the best part of my life! 🌟</p>
+
+    <div class="slider">
+        <div class="slides" id="slides">
+            <https://imgur.com/jgLL119" class="slide" alt="Love Image 1">
+            <https://imgur.com/QcQwxaG" class="slide" alt="Love Image 2">
+            <https://imgur.com/OEju4P1" class="slide" alt="Love Image 3">
+        </div>
+    </div>
+    <button onclick="prevSlide()">Previous</button>
+    <button onclick="nextSlide()">Next</button>
+
+    <script>
+        let currentSlide = 0;
+
+        function revealMessage() {
+            document.getElementById("specialMessage").style.display = "block";
+        }
+
+        function changeBackground() {
+            document.body.style.backgroundColor = getRandomColor();
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function nextSlide() {
+            const slides = document.getElementById("slides");
+            currentSlide = (currentSlide + 1) % slides.children.length;
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            const slides = document.getElementById("slides");
+            currentSlide = (currentSlide - 1 + slides.children.length) % slides.children.length;
+            updateSlidePosition();
+        }
+
+        function updateSlidePosition() {
+            const slides = document.getElementById("slides");
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
+</body>
+</html>
