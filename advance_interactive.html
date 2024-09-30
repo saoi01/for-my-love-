@@ -6,7 +6,7 @@
     <title>Interactive Letter</title>
     <style>
         body {
-            background-color: #001f3f; /* Dark blue background */
+            background-color: #004d00; /* Dark green background */
             color: white; /* White text color */
             font-family: 'Arial', sans-serif; /* Simple font */
             text-align: center; /* Center the text */
@@ -25,7 +25,7 @@
             animation: slideIn 0.5s; /* Slide-in animation */
         }
         button {
-            background-color: #007bff; /* Button color */
+            background-color: #006400; /* Darker green for buttons */
             color: white; /* Button text color */
             border: none; /* No border */
             padding: 10px 20px; /* Padding for buttons */
@@ -36,7 +36,7 @@
             margin: 10px; /* Margin for buttons */
         }
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #004d00; /* Even darker green on hover */
             transform: scale(1.05); /* Slightly enlarge on hover */
         }
         @keyframes fadeIn {
@@ -51,33 +51,24 @@
 </head>
 <body>
     <h1>Happy Monthsary, My Love!</h1>
-    <p>Click the buttons below to reveal my messages:</p>
+    <p>Type your message below and click to reveal it:</p>
 
-    <button onclick="revealMessage(1)">Reveal Message 1</button>
-    <div class="message" id="message-1">I love you more than words can express.</div>
-
-    <button onclick="revealMessage(2)">Reveal Message 2</button>
-    <div class="message" id="message-2">You make my world brighter every day.</div>
-
-    <button onclick="revealMessage(3)">Reveal Message 3</button>
-    <div class="message" id="message-3">I cherish every moment we spend together.</div>
-
-    <button onclick="revealMessage(4)">Reveal Message 4</button>
-    <div class="message" id="message-4">Thank you for being you!</div>
-
-    <button onclick="revealMessage(5)">Reveal Message 5</button>
-    <div class="message" id="message-5">You are my greatest adventure.</div>
-
-    <button onclick="revealMessage(6)">Reveal Message 6</button>
-    <div class="message" id="message-6">Happy monthsary! Here's to us!</div>
+    <input type="text" id="userMessage" placeholder="Write your message here..." style="width: 80%; padding: 10px; font-size: 1em; border-radius: 5px; border: none;">
+    <button onclick="revealMessage()">Reveal Message</button>
+    
+    <div class="message" id="message"></div>
 
     <script>
-        function revealMessage(index) {
-            const message = document.getElementById(`message-${index}`);
-            message.style.display = message.style.display === 'none' || message.style.display === '' ? 'block' : 'none';
-            if (message.style.display === 'block') {
-                message.classList.add('show');
-                setTimeout(() => message.classList.remove('show'), 2000); // Message will fade out after 2 seconds
+        function revealMessage() {
+            const messageInput = document.getElementById('userMessage').value;
+            const messageDisplay = document.getElementById('message');
+
+            if (messageInput.trim() !== '') {
+                messageDisplay.innerText = messageInput; // Set the message text
+                messageDisplay.style.display = 'block'; // Show the message
+                messageDisplay.classList.add('show');
+            } else {
+                alert('Please enter a message before revealing it!'); // Alert if no message is typed
             }
         }
     </script>
