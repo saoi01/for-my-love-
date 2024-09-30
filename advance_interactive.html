@@ -11,49 +11,65 @@
             font-family: Arial, sans-serif; /* Font style */
             text-align: center; /* Center the text */
         }
-        #message-container {
-            margin: auto; /* Center the message */
-            display: none; /* Hide the message by default */
-            font-size: 1.5em; /* Increase font size for better readability */
+        #garden {
+            display: flex; /* Use flexbox for the garden layout */
+            justify-content: center; /* Center the flowers */
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            margin: 20px; /* Add margin */
+        }
+        .flower {
+            width: 80px; /* Flower width */
+            height: 80px; /* Flower height */
+            background-color: #ff69b4; /* Flower color */
+            border-radius: 50%; /* Make it round */
+            position: relative; /* Position for flower label */
+            margin: 10px; /* Space between flowers */
+            cursor: pointer; /* Pointer cursor for flowers */
+            display: flex; /* Center flower label */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            font-size: 1.5em; /* Flower label size */
+            color: white; /* Flower label color */
+        }
+        .message {
+            display: none; /* Hide message by default */
+            font-size: 1.5em; /* Increase font size for messages */
+            margin-top: 20px; /* Space above messages */
         }
     </style>
 </head>
 <body>
     <h1>For My Love</h1>
-    <p>Happy monthsary! Click the button to reveal sweet messages.</p>
+    <p>Happy monthsary, mahal ko! Water the tulips to reveal sweet messages!</p>
+    
+    <!-- Garden container -->
+    <div id="garden">
+        <div class="flower" onclick="revealMessage(0)">🌷</div>
+        <div class="flower" onclick="revealMessage(1)">🌷</div>
+        <div class="flower" onclick="revealMessage(2)">🌷</div>
+        <div class="flower" onclick="revealMessage(3)">🌷</div>
+        <div class="flower" onclick="revealMessage(4)">🌷</div>
+        <div class="flower" onclick="revealMessage(5)">🌷</div>
+    </div>
     
     <!-- Message container -->
     <div id="message-container">
-        <p id="dynamic-message"></p> <!-- Dynamic message display -->
+        <p class="message" id="message-0">I love you more than words can express. Every day I think of you. Always, mahal ko.</p>
+        <p class="message" id="message-1">You make my world brighter every day. Without you, my world will be so dark. So, don't go anywhere, okay?</p>
+        <p class="message" id="message-2">I cherish every moment we spend together. But please, wag ka na magpagutom kapag kasama 'ko. I love you so much!</p>
+        <p class="message" id="message-3">Thank you for being you!I appreciate your existence, love...sobra.</p>
+        <p class="message" id="message-4">Don't go anywhere, okay? Papakasalan pa kita.</p>
+        <p class="message" id="message-5">Happy monthsary! Here's to us!</p>
     </div>
-    
-    <button onclick="showNextMessage()">Show Next Message</button>
 
     <script>
-        // Array of messages
-        const messages = [
-            "I love you more than words can express.",
-            "You make my world brighter every day.",
-            "I cherish every moment we spend together.",
-            "Thank you for being you!",
-            "You are my greatest adventure.",
-            "Happy monthsary! Here's to us!"
-        ];
-        
-        let currentIndex = 0;
-
-        // Function to show the next message
-        function showNextMessage() {
-            if (currentIndex < messages.length) {
-                const messageContainer = document.getElementById("message-container");
-                const dynamicMessage = document.getElementById("dynamic-message");
-
-                dynamicMessage.textContent = messages[currentIndex]; // Set the message text
-                messageContainer.style.display = "block"; // Show the message container
-                currentIndex++; // Move to the next message
-            } else {
-                alert("No more messages to show!");
-            }
+        // Function to reveal a message
+        function revealMessage(index) {
+            const message = document.getElementById(`message-${index}`);
+            message.style.display = "block"; // Show the message
+            const flower = document.getElementsByClassName("flower")[index];
+            flower.style.pointerEvents = "none"; // Disable clicking on already clicked flowers
+            flower.innerHTML = "💧"; // Change flower to show it's been watered
         }
     </script>
     
