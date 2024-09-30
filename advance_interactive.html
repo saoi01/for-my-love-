@@ -6,30 +6,46 @@
     <title>Your Interactive Letter</title>
     <style>
         body {
-            background-color: #ffcccb; /* Light pink background */
-            color: #333; /* Dark text color */
-            font-family: Arial, sans-serif; /* Font style */
+            background-color: #ff69b4; /* Hot pink background */
+            color: #fff; /* White text color */
+            font-family: 'Segoe Script', cursive; /* Pretty font style */
             text-align: center; /* Center the text */
+            overflow: hidden; /* Hide overflow to keep the garden tidy */
         }
         #garden {
             display: flex; /* Use flexbox for the garden layout */
             justify-content: center; /* Center the flowers */
             flex-wrap: wrap; /* Allow wrapping to the next line */
             margin: 20px; /* Add margin */
+            position: relative; /* Position for flowers */
+            height: 500px; /* Set height for the garden */
+        }
+        .seed {
+            width: 50px; /* Seed width */
+            height: 50px; /* Seed height */
+            background-color: #ffcccb; /* Seed color */
+            border-radius: 50%; /* Make it round */
+            position: absolute; /* Position seeds absolutely */
+            margin: 10px; /* Space between seeds */
+            cursor: pointer; /* Pointer cursor for seeds */
+            display: flex; /* Center seed label */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            font-size: 1.5em; /* Seed label size */
+            color: white; /* Seed label color */
         }
         .flower {
             width: 80px; /* Flower width */
             height: 80px; /* Flower height */
             background-color: #ff69b4; /* Flower color */
             border-radius: 50%; /* Make it round */
-            position: relative; /* Position for flower label */
+            position: absolute; /* Position for flower */
             margin: 10px; /* Space between flowers */
-            cursor: pointer; /* Pointer cursor for flowers */
-            display: flex; /* Center flower label */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
+            display: none; /* Hide flower by default */
             font-size: 1.5em; /* Flower label size */
             color: white; /* Flower label color */
+            text-align: center; /* Center text */
+            line-height: 80px; /* Center text vertically */
         }
         .message {
             display: none; /* Hide message by default */
@@ -40,36 +56,72 @@
 </head>
 <body>
     <h1>For My Love</h1>
-    <p>Happy monthsary, mahal ko! Water the tulips to reveal sweet messages!</p>
+    <p>Happy monthsary, mahal ko! Please water the seeds to reveal sweet messages!</p>
     
     <!-- Garden container -->
     <div id="garden">
-        <div class="flower" onclick="revealMessage(0)">🌷</div>
-        <div class="flower" onclick="revealMessage(1)">🌷</div>
-        <div class="flower" onclick="revealMessage(2)">🌷</div>
-        <div class="flower" onclick="revealMessage(3)">🌷</div>
-        <div class="flower" onclick="revealMessage(4)">🌷</div>
-        <div class="flower" onclick="revealMessage(5)">🌷</div>
+        <div class="seed" style="top: 100px; left: 50px;" onclick="waterSeed(0)">💧</div>
+        <div class="seed" style="top: 200px; left: 150px;" onclick="waterSeed(1)">💧</div>
+        <div class="seed" style="top: 300px; left: 250px;" onclick="waterSeed(2)">💧</div>
+        <div class="seed" style="top: 100px; left: 300px;" onclick="waterSeed(3)">💧</div>
+        <div class="seed" style="top: 250px; left: 400px;" onclick="waterSeed(4)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(5)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(6)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(7)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(8)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(9)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(10)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(11)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(12)">💧</div>
+        <div class="seed" style="top: 350px; left: 100px;" onclick="waterSeed(13)">💧</div>
+
+        <div class="flower" id="flower-0" style="top: 100px; left: 50px;">🌷</div>
+        <div class="flower" id="flower-1" style="top: 200px; left: 150px;">🌷</div>
+        <div class="flower" id="flower-2" style="top: 300px; left: 250px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 100px; left: 300px;">🌷</div>
+        <div class="flower" id="flower-4" style="top: 250px; left: 400px;">🌷</div>
+        <div class="flower" id="flower-5" style="top: 350px; left: 100px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 100px; left: 50px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 200px; left: 400px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 100px; left: 150px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 100px; left: 300px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 200px; left: 400px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 100px; left: 50px;">🌷</div>
+        <div class="flower" id="flower-3" style="top: 200px; left: 100px;">🌷</div>
     </div>
     
     <!-- Message container -->
     <div id="message-container">
-        <p class="message" id="message-0">I love you more than words can express. Every day I think of you. Always, mahal ko.</p>
-        <p class="message" id="message-1">You make my world brighter every day. Without you, my world will be so dark. So, don't go anywhere, okay?</p>
-        <p class="message" id="message-2">I cherish every moment we spend together. But please, wag ka na magpagutom kapag kasama 'ko. I love you so much!</p>
-        <p class="message" id="message-3">Thank you for being you!I appreciate your existence, love...sobra.</p>
-        <p class="message" id="message-4">Don't go anywhere, okay? Papakasalan pa kita.</p>
-        <p class="message" id="message-5">Happy monthsary! Here's to us!</p>
+        <p class="message" id="message-0">I'm so sorry, love. I don't know how to use this kind of website, waaaa ˚‧º·(˚ ˃̣̣̥᷄⌓˂̣̣̥᷅ )‧º·˚ But, I'm trying po. I wanted to create another way of how I can send you a letter po kasi and I have decided to use this website. What do you think, love? Am I doing great? ˶ᵔ ᵕ ᵔ˶ I hope I'm doing great, love. I'm trying to understand these things going on here, I have no idea. hopefully, I'll be able to finish this and make this letter meaningful to you. I'm happy everytime na ginagawan mo 'ko ng mga gantong gifts for our monthsary. For me, it's hard to do this kaya I'm amazed at how your mind works. For me, you're a genius. I know na you won't agree and will probably tell me na wala lang 'yon, simple lang naman 'yon kasi IT student ako, bla bla bla. But of course, that's not the case for me po. I know you're an IT student pero I never knew na this simple task for you could be so complicated for someone like me.</p>
+        <p class="message" id="message-1">Anyway, I don't know how this works, AHHHHHHHHHHH! I'm so stupid :< ahm...Happy monthsary, love. I know na you're tired by now. so, I hope this letter makes you feel special. I tried my best not to google this one and learn this bit by bit with my stock knowledge from IT01. But I still can't do this right. I just want to say that I'm happy to celebrate something every month with you. This is a dream that I wish to continue every month even at the last moment of my breath. I know that you already know how much I'm cherishing and will keep cherishing you. I will do everything to make this relationship work. I want you to be the last person I will love for the rest of my life.</p>
+        <p class="message" id="message-2">Thank you, my love, for doing everything you can to make me feel loved and cared for. Even when you are sick, tired, sleepy, hungry, thirsty, lazy, and busy, you still do things for me so I won't feel sad. I notice everything you do for me and each time you do something for me, I feel extra special. I never knew that someone could love me as much as you do. It's something that can make me cry every time I think of it. Please bear with me, love, if sometimes I'm difficult to deal with. I know that sometimes I'm a burden to you and you just endure it. Thank you for all the patience you're pouring into our relationship. This month has been a rollercoaster of emotions for us. There are times when we don't understand each other, times when we're just happy and feel so loved, and times when we miss each other very much. But at the end of the day, I hope that we won't forget that our love for each other is what makes those emotions go round and round like a ferris wheel.</p>
+        <p class="message" id="message-3">Happy monthsary, love! I hope to celebrate every monthsary and anniversary with you and to reach every milestone in life with you. I want to cry at every failure and laugh at every achievement with you. I want to spend every day with you, whether in life or the afterlife. Let's watch horror movies every All Souls Day, see the twinkling lights every Christmas Day, and watch fireworks light up the dark sky every New Year. Let's fill each other's hearts with love every Valentine's Day, and light each other's candles every month on our birthdays. Let's be together for the rest of our lives so we can celebrate every day, even without occasions. Just being in love every day is worth celebrating.</p>
+        <p class="message" id="message-4">Each month is a treasure because it begins with you by my side, making every moment magical. ⸜(｡˃ ᵕ ˂ )⸝♡ I love you so much, my love. Life is difficult, indeed. Please remind yourself that every day, you are loved by me. I am always proud of you. In any situation, you can run on me. Kapag mabigat na, sa'kin ka tatakbo ha? Sa'kin ka lalapit, mahal ko ha?</p>
+        <p class="message" id="message-5">I'm always grateful to wake up every day with you in my heart and mind. I might be forgetful but, my heart will always remind my whole existence that I love you.</p>
+        <p class="message" id="message-5">And so, I will choose you in every lifetime.</p>
+        <p class="message" id="message-5">I will choose to love you every day.</p>
+        <p class="message" id="message-5">I will choose to love every part of you.</p>
+        <p class="message" id="message-5">I will choose to love you despite pains.</p>
+        <p class="message" id="message-5">I will always choose you in a room full of people.</p>
+        <p class="message" id="message-5">In a world full of people.</p>
+        <p class="message" id="message-5">It will always be you.</p>
+        <p class="message" id="message-5">I love you very much, love. I love you a lot♡</p>
     </div>
 
     <script>
+        // Function to water a seed
+        function waterSeed(index) {
+            const flower = document.getElementById(`flower-${index}`);
+            flower.style.display = "block"; // Show the flower
+            const seed = document.getElementsByClassName("seed")[index];
+            seed.style.display = "none"; // Hide the seed
+            revealMessage(index); // Show the corresponding message
+        }
+
         // Function to reveal a message
         function revealMessage(index) {
             const message = document.getElementById(`message-${index}`);
             message.style.display = "block"; // Show the message
-            const flower = document.getElementsByClassName("flower")[index];
-            flower.style.pointerEvents = "none"; // Disable clicking on already clicked flowers
-            flower.innerHTML = "💧"; // Change flower to show it's been watered
         }
     </script>
     
