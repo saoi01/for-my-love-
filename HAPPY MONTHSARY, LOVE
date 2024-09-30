@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Letter</title>
+    <style>
+        body {
+            background-color: #001f3f; /* Dark blue background */
+            color: white; /* White text color */
+            font-family: 'Arial', sans-serif; /* Simple font */
+            text-align: center; /* Center the text */
+            padding: 20px; /* Padding around the content */
+        }
+        h1 {
+            color: #ffcccb; /* Light pink color for the title */
+        }
+        .message {
+            display: none; /* Hide messages initially */
+            margin: 20px 0; /* Margin for messages */
+            font-size: 1.5em; /* Font size for messages */
+        }
+        button {
+            background-color: #007bff; /* Button color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            padding: 10px 20px; /* Padding for buttons */
+            font-size: 1em; /* Font size for buttons */
+            cursor: pointer; /* Pointer cursor for buttons */
+            border-radius: 5px; /* Rounded corners for buttons */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Monthsary, My Love!</h1>
+    <p>Click the buttons below to reveal my messages:</p>
+
+    <button onclick="revealMessage(1)">Reveal Message 1</button>
+    <div class="message" id="message-1">I love you more than words can express.</div>
+
+    <button onclick="revealMessage(2)">Reveal Message 2</button>
+    <div class="message" id="message-2">You make my world brighter every day.</div>
+
+    <button onclick="revealMessage(3)">Reveal Message 3</button>
+    <div class="message" id="message-3">I cherish every moment we spend together.</div>
+
+    <button onclick="revealMessage(4)">Reveal Message 4</button>
+    <div class="message" id="message-4">Thank you for being you!</div>
+
+    <button onclick="revealMessage(5)">Reveal Message 5</button>
+    <div class="message" id="message-5">You are my greatest adventure.</div>
+
+    <button onclick="revealMessage(6)">Reveal Message 6</button>
+    <div class="message" id="message-6">Happy monthsary! Here's to us!</div>
+
+    <script>
+        function revealMessage(index) {
+            const message = document.getElementById(`message-${index}`);
+            message.style.display = message.style.display === 'none' || message.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
